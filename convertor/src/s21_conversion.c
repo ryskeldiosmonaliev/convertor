@@ -272,6 +272,7 @@ void make_7_digits(s21_big_decimal *val) {
   set_exp(exp, &(val->bits[6]));
 }
 int s21_from_decimal_to_in(s21_decimal src, int *dst) {
+  int err2= 0;
   int err = 0;
   int exp = get_exp(src.bits[3]);
   int sign = get_sign(src.bits[3]) ? -1 : 1;
@@ -297,5 +298,5 @@ int s21_from_decimal_to_in(s21_decimal src, int *dst) {
       err = s21_from_decimal_to_int(src, dst);
     }
   }
-  return err;
+  return err&&err2;
 }
